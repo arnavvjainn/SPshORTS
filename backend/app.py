@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    newsapi = NewsApiClient(api_key="eb76e62622bf4273bddd3ec57dd2e03b")
+    newsapi = NewsApiClient(api_key="")
     top_headlines = newsapi.get_top_headlines(category='sports', language='en')
 
     articles = top_headlines['articles']
@@ -22,7 +22,7 @@ def index():
         my_article = articles[i]
         
         news.append(my_article['title'])
-        description.append(my_article['description'])
+        description.append(my_article['content'])
         img.append(my_article['urlToImage']) 
 
         
