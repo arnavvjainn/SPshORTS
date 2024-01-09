@@ -1,6 +1,6 @@
 # SPshORTS ⚽🏏🏉🎾
  A sports news app that summarizes an article to 60 words
- - The application is currently development since i am fighting the BUG demons
+ - The application is currently development since i am fighting the BUG 🐛 demons
 
 
 ### A small explanation of how the app works
