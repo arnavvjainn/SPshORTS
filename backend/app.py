@@ -12,31 +12,6 @@ import cohere
 co = cohere.Client(config.cohere_api_key)
 app = Flask(__name__)
 
-
-
-# @app.route('/', methods=['GET'])
-# def index():
-#     newsapi = NewsApiClient(api_key=config.api_key)
-#     top_headlines = newsapi.get_top_headlines(category='sports', language='en')
-
-#     articles = top_headlines['articles']
-
-#     description = []
-#     news = []
-#     img = []
-
-#     for i in range(len(articles)):
-#         my_article = articles[i]
-        
-#         news.append(my_article['title'])
-#         description.append(my_article['coneten'])
-#         img.append(my_article['urlToImage']) 
-
-        
-#     my_list = zip(news, description, img) 
-
-#     return render_template('index.html', context = my_list)
-
 def summarize(text):
     response = co.summarize(
         text=text,
@@ -79,5 +54,5 @@ def index():
 
     return render_template('index.html', context=my_list)
 
-if __name__ == "main":
+if __name__ == "__main__":
     app.run(debug=True)
