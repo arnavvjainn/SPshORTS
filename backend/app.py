@@ -21,6 +21,7 @@ def summarize(text):
     )
     return response.summary
 
+
 @app.route('/', methods=['GET'])
 def index():
     url = f"https://newsapi.org/v2/top-headlines?language=en&category=sports&apiKey={config.news_api_key}"
@@ -32,25 +33,28 @@ def index():
     titles = []
     contents = []
     image_urls = []
+    urls = []
 
     # Loop through articles and store details
     for article in data['articles'][:2]:
         titles.append(article['title'])
         image_urls.append(article.get('urlToImage'))
+        urls.append(article['url'])
 
+        
         # Fetch the article content
         article_response = requests.get(article['url'])
         soup = BeautifulSoup(article_response.text, 'html.parser')
 
         article_content = soup.get_text()
 
-        summarized_content = summarize(article_content)
+        #summarized_content = summarize(article_content)
 
         # Extract text and store
-        contents.append(summarized_content)
+        contents.append(article_content)
 
     # Zip the lists together
-    my_list = zip(titles, contents, image_urls)
+    my_list = zip(titles, contents, image_urls, url)
 
     return render_template('index.html', context=my_list)
 

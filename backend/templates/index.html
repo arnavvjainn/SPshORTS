@@ -16,9 +16,10 @@
             </h1>
         </div>
         <div class="container">
-            {% for news, des, i in context %}
+            {% for news, des, i, url in context %}
  
             <img src="{{i}}" alt=""> 
+            <h4>Link:</h4> {{url}}
             <h3>News: </h3> {{news}}
             <h4>Description: </h4> {{des}}
          
